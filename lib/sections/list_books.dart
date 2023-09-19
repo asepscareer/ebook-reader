@@ -12,6 +12,7 @@ class ListBooks extends StatelessWidget {
           crossAxisCount: 2,
           crossAxisSpacing: widhtDevice * 0.02,
           mainAxisSpacing: widhtDevice * 0.02,
+          mainAxisExtent: 200,
         ),
         itemCount: 10,
         itemBuilder: (context, index) {
@@ -19,7 +20,6 @@ class ListBooks extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            clipBehavior: Clip.antiAlias,
             color: Colors.white,
             child: InkWell(
               onTap: () {},
@@ -29,11 +29,16 @@ class ListBooks extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Container(
-                      margin: const EdgeInsets.all(20.0),
+                      alignment: Alignment.topLeft,
+                      margin: const EdgeInsets.only(
+                        left: 20,
+                        top: 20,
+                      ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         border: Border.all(style: BorderStyle.none),
                         image: const DecorationImage(
+                          alignment: Alignment.bottomLeft,
                           fit: BoxFit.fitHeight,
                           image: AssetImage(
                             "images/book-card.jpg",
@@ -43,8 +48,10 @@ class ListBooks extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: widhtDevice * 0.03,
+                    padding: const EdgeInsets.only(
+                      left: 20,
+                      right: 20,
+                      top: 10,
                     ),
                     alignment: Alignment.centerLeft,
                     child: const Text(
@@ -57,9 +64,10 @@ class ListBooks extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: widhtDevice * 0.03,
-                      vertical: widhtDevice * 0.01,
+                    margin: const EdgeInsets.only(
+                      top: 5,
+                      left: 20,
+                      bottom: 10,
                     ),
                     alignment: Alignment.centerLeft,
                     child: const Text("Author"),

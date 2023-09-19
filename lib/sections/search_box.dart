@@ -10,43 +10,55 @@ class SearchBox extends StatefulWidget {
 class _SearchBoxState extends State<SearchBox> {
   @override
   Widget build(BuildContext context) {
-    double widthDevice = MediaQuery.of(context).size.width;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        SizedBox(
-          width: widthDevice * 0.7,
-          height: 50,
-          child: SearchBar(
-            hintText: "Search Books...",
-            onTap: () {},
-            hintStyle: const MaterialStatePropertyAll(
-              TextStyle(
-                color: Colors.grey,
+    return IntrinsicHeight(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Container(
+              constraints: const BoxConstraints(
+                minHeight: 30.0,
+                minWidth: 300,
+                maxHeight: 35.0,
+                maxWidth: 700,
+              ),
+              child: SearchBar(
+                elevation: const MaterialStatePropertyAll(0.5),
+                hintText: "Search Books...",
+                onTap: () {},
+                hintStyle: const MaterialStatePropertyAll(
+                  TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
+                leading: const Icon(
+                  Icons.search,
+                  color: Colors.grey,
+                ),
+                backgroundColor: const MaterialStatePropertyAll(Colors.white),
               ),
             ),
-            leading: const Icon(
-              Icons.search,
-              color: Colors.grey,
-            ),
-            backgroundColor: const MaterialStatePropertyAll(Colors.white),
           ),
-        ),
-        SizedBox(
-          width: 65,
-          height: 65,
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(35),
+          Container(
+            constraints: const BoxConstraints(
+              minHeight: 50,
+              minWidth: 50,
+              maxHeight: 50,
+              maxWidth: 50,
             ),
-            child: InkWell(
-              onTap: () {},
-              borderRadius: BorderRadius.circular(35),
-              child: const Icon(Icons.filter),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(35),
+              ),
+              child: InkWell(
+                onTap: () {},
+                borderRadius: BorderRadius.circular(35),
+                child: const Icon(Icons.filter),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

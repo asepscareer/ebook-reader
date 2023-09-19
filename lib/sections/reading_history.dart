@@ -17,9 +17,11 @@ class ReadingHistory extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: widhtDevice * 0.2,
-              width: widhtDevice * 0.15,
-              margin: const EdgeInsets.all(20.0),
+              constraints: const BoxConstraints(
+                minWidth: 75,
+                minHeight: 120,
+              ),
+              margin: const EdgeInsets.all(15.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 border: Border.all(style: BorderStyle.none),
@@ -36,9 +38,9 @@ class ReadingHistory extends StatelessWidget {
                 children: [
                   Container(
                     alignment: Alignment.bottomLeft,
-                    padding: EdgeInsets.only(
-                      top: widhtDevice * 0.03,
-                      right: widhtDevice * 0.015,
+                    padding: const EdgeInsets.only(
+                      top: 15,
+                      right: 15,
                     ),
                     child: const Text(
                       "Lean UX: Applying Lean Principles to Improve User Experience",
@@ -49,16 +51,16 @@ class ReadingHistory extends StatelessWidget {
                   ),
                   Container(
                     alignment: Alignment.bottomLeft,
-                    padding: const EdgeInsets.only(top: 20),
+                    margin: const EdgeInsets.only(top: 5, right: 15),
                     child: const Text(
                       "Josh Haze",
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.normal,
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: widhtDevice * 0.025),
+                    margin: const EdgeInsets.only(top: 10, right: 15),
                     alignment: Alignment.bottomLeft,
                     child: const Text(
                       "Continue Reading",

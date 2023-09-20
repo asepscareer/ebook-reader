@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
 
+import '../utils/screen_util.dart';
+
 class ListBooks extends StatelessWidget {
   const ListBooks({super.key});
 
   @override
   Widget build(BuildContext context) {
     double widhtDevice = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
+
+    int totalSquare() => Responsive(screenWidth).isMobile() ? 2 : 3;
+
     return Expanded(
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
+          crossAxisCount: totalSquare(),
           crossAxisSpacing: widhtDevice * 0.02,
           mainAxisSpacing: widhtDevice * 0.02,
           mainAxisExtent: 200,
         ),
-        itemCount: 10,
+        itemCount: 15,
         itemBuilder: (context, index) {
           return Card(
             shape: RoundedRectangleBorder(
@@ -29,19 +35,21 @@ class ListBooks extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Container(
-                      alignment: Alignment.topLeft,
+                      alignment: Alignment.bottomLeft,
                       margin: const EdgeInsets.only(
                         left: 20,
                         top: 20,
+                        right: 20,
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         border: Border.all(style: BorderStyle.none),
-                        image: const DecorationImage(
+                        image: DecorationImage(
                           alignment: Alignment.bottomLeft,
-                          fit: BoxFit.fitHeight,
-                          image: AssetImage(
-                            "images/book-card.jpg",
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                            "https://picsum.photos/id/$index/5000/3333",
+                            scale: 1,
                           ),
                         ),
                       ),

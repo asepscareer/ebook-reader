@@ -5,7 +5,6 @@ class ReadingHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double widhtDevice = MediaQuery.of(context).size.height;
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
@@ -28,7 +27,7 @@ class ReadingHistory extends StatelessWidget {
                 image: const DecorationImage(
                   fit: BoxFit.cover,
                   image: AssetImage(
-                    "images/book-card.jpg",
+                    "assets/images/book-card.jpg",
                   ),
                 ),
               ),

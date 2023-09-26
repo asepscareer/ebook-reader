@@ -1,34 +1,36 @@
-import 'package:flutter/material.dart';
-
-import '../utils/screen_util.dart';
+import '../constanta/imports.dart';
 
 class ListBooks extends StatelessWidget {
   const ListBooks({super.key});
 
   @override
   Widget build(BuildContext context) {
-    double widhtDevice = MediaQuery.of(context).size.height;
+    double widthDevice = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
     int totalSquare() => Responsive(screenWidth).isMobile() ? 2 : 3;
 
-    return Expanded(
+    return Flexible(
+      flex: 1,
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: totalSquare(),
-          crossAxisSpacing: widhtDevice * 0.02,
-          mainAxisSpacing: widhtDevice * 0.02,
-          mainAxisExtent: 200,
+          crossAxisSpacing: widthDevice * 0.02,
+          mainAxisSpacing: widthDevice * 0.02,
+          mainAxisExtent: 235,
         ),
         itemCount: 15,
         itemBuilder: (context, index) {
           return Card(
+            elevation: 2,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
             color: Colors.white,
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, "/book");
+              },
               borderRadius: BorderRadius.circular(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import '../constanta/imports.dart';
 
 class SearchBox extends StatefulWidget {
   const SearchBox({super.key});
@@ -51,9 +51,30 @@ class _SearchBoxState extends State<SearchBox> {
                 borderRadius: BorderRadius.circular(35),
               ),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text("Nofitication"),
+                        content: const Text("Filter is unavailable!"),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text("Ok"),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
                 borderRadius: BorderRadius.circular(35),
-                child: const Icon(Icons.filter),
+                child: const Icon(
+                  Icons.filter_alt_outlined,
+                  color: Colors.grey,
+                ),
               ),
             ),
           ),

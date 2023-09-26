@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import '../constanta/imports.dart';
 
 class ReadingHistory extends StatelessWidget {
   const ReadingHistory({super.key});
@@ -11,7 +11,29 @@ class ReadingHistory extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
-        onTap: () {},
+        onTap: () {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text("Confirmation"),
+              content: const Text("Continue Reading?"),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/book");
+                  },
+                  child: const Text("Yes"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("Cancel"),
+                ),
+              ],
+            ),
+          );
+        },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -61,10 +83,10 @@ class ReadingHistory extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(top: 10, right: 15),
                     alignment: Alignment.bottomLeft,
-                    child: const Text(
+                    child: Text(
                       "Continue Reading",
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Constanta.primaryColor,
                       ),
                     ),
                   ),
